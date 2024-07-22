@@ -1,0 +1,63 @@
+<h5 class="mb-5 text-lg font-bold tracking-tight text-gray-900 dark:text-white ">Patient Details</h5>
+<form [formGroup]="PatientForm" class="w-full" (ngSubmit)="onSubmit()" novalidate>
+  <div class="mb-5">
+    <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
+    <input type="text" id="firstName" class="form-control" placeholder="First Name" formControlName="firstName">
+    @if (PatientForm.get('firstName')?.hasError('required') && PatientForm.get('firstName')?.touched) {
+    <div class="form-error">Name is required</div>
+    }
+  </div>
+  <div class="mb-5">
+    <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
+    <input type="lastName" id="lastName" class="form-control" placeholder="Last Name" formControlName="lastName">
+    @if (PatientForm.get('lastName')?.hasError('required') && PatientForm.get('lastName')?.touched) {
+    <div class="form-error">Email is required</div>
+    }
+  </div>
+  <div class="mb-5">
+    <label for="phoneNo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone No</label>
+    <input type="text" id="phoneNo" class="form-control" placeholder="Phone No" formControlName="phoneNo">
+    @if (PatientForm.get('phoneNo')?.hasError('required') && PatientForm.get('phoneNo')?.touched) {
+    <div class="form-error">Mobile is required</div>
+    }
+  </div>
+  <div class="mb-5">
+    <label for="dob" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date of Birth</label>
+    <input type="date" id="dob" class="form-control" placeholder="" formControlName="dob">
+    @if (PatientForm.get('dob')?.hasError('required') && PatientForm.get('dob')?.touched) {
+    <div class="form-error">Date of Birth is required</div>
+    }
+  </div>
+  <div class="mb-5">
+    <label for="postCode" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Post Code</label>
+    <input type="text" id="postCode" class="form-control" placeholder="" formControlName="postCode">
+    @if (PatientForm.get('postCode')?.hasError('required') && PatientForm.get('postCode')?.touched) {
+    <div class="form-error">Post Code</div>
+    }
+  </div>
+  <div class="mb-5">
+    <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+    <input type="text" id="address" class="form-control" placeholder="" formControlName="address">
+    @if (PatientForm.get('address')?.hasError('required') && PatientForm.get('address')?.touched) {
+    <div class="form-error">Address</div>
+    }
+  </div>
+  <div class="mb-5">
+    <label for="state" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">State</label>
+    <input type="text" id="state" class="form-control" placeholder="" formControlName="state">
+    @if (PatientForm.get('state')?.hasError('required') && PatientForm.get('state')?.touched) {
+    <div class="form-error">State</div>
+    }
+  </div>
+  <div class="mb-5">
+    <label for="suburb" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Suburb</label>
+    <input type="text" id="suburb" class="form-control" placeholder="" formControlName="suburb">
+    @if (PatientForm.get('suburb')?.hasError('required') && PatientForm.get('suburb')?.touched) {
+    <div class="form-error">Suburb</div>
+    }
+  </div>
+  <button type="submit"
+    class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+  <button type="button" (click)="onClose()"
+    class="text-white  ms-2 bg-gray-700 hover:bg-gray-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center">Cancel</button>
+</form>

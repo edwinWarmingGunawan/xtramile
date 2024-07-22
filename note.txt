@@ -1,0 +1,11 @@
+create from scratch:
+
+run api :
+.\mvnw clean install package
+.\mvnw spring-boot:run
+
+running test : 
+.\mvnw test
+
+
+
