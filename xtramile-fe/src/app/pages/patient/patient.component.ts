@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { PatientService } from '../../services/patient.service';
+import { ApiResponse,IPatient } from '../shared/models/Patient';
 import { ModelComponent } from '../shared/ui/model/model.component';
 import { PatientFormComponent } from '../patient-form/patient-form.component';
 import { ToastrService } from 'ngx-toastr';
-import { PatientService } from '../../services/patient.service';
-import { IPatient } from '../shared/models/Patient';
+
 @Component({
   selector: 'app-patient',
   standalone: true,
@@ -15,38 +16,42 @@ export class PatientComponent implements OnInit {
   isModelOpen = false;
   Patients: IPatient[] = [];
   Patient!: IPatient;
-
-  constructor(
-    private PatientService: PatientService,
-    private toastr: ToastrService
-  ) {}
-
-  currentPage = 1;
-  pageSize = 10;
+  currentPage = 0;
   totalPages = 0;
+  limit = 5; // Number of patients per page
+
+  constructor(private patientService: PatientService,private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    this.getAllPatient();
-    this.totalPages = Math.ceil(this.Patients.length / this.pageSize);
+    this.getAllPatients();
   }
 
-  previousPage() {
-    this.currentPage--;
-  }
-
-  nextPage() {
-    this.currentPage++;
-  }
-
-  getAllPatient() {
-    this.PatientService.getAllPatient().subscribe({
+  getAllPatients(): void {
+    this.patientService.getAllPatients(this.currentPage,this.limit).subscribe({
       next: (response) => {
-        console.log('response',response.data)
         if (response.data) {
           this.Patients = response.data;
+          this.totalPages = response.total;
         }
       },
     });
+  }
+
+  // Methods to handle page changes (next, previous, etc.)
+  nextPage(): void {
+    console.log(this.currentPage+">>>>>>"+this.totalPages)
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.getAllPatients();
+    }
+  }
+
+  previousPage(): void {
+    console.log(this.currentPage)
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.getAllPatients();
+    }
   }
 
   loadPatient(Patient: IPatient) {
@@ -55,10 +60,10 @@ export class PatientComponent implements OnInit {
   }
 
   deletePatient(id: string) {
-    this.PatientService.deletePatient(id).subscribe({
+    this.patientService.deletePatient(id).subscribe({
       next: (response) => {
         this.toastr.success(response.message);
-        this.getAllPatient();
+        this.getAllPatients();
       },
     });
   }
@@ -69,6 +74,6 @@ export class PatientComponent implements OnInit {
 
   closeModel() {
     this.isModelOpen = false;
-    this.getAllPatient();
+    this.getAllPatients();
   }
 }
