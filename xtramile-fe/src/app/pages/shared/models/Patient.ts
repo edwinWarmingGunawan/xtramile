@@ -1,6 +1,7 @@
 export interface ApiResponse<T> {
   message?: string;
   data: T;
+  total: number; // Add this property
 }
 
 export interface IPatient {
