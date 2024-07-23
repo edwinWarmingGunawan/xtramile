@@ -35,7 +35,7 @@ public class PatientController {
             @RequestParam(defaultValue = "5") int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<Patient> patients = patientRepository.findAll(pageable);
-        ResponseData responseData = new ResponseData(patients.getContent(), "Get All Data Ok.");
+        ResponseData responseData = new ResponseData(patients.getContent(), "Get All Data Ok.",patients.getTotalElements());
         return ResponseEntity.ok(responseData);
     }
 
