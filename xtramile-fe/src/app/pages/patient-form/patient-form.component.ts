@@ -18,7 +18,7 @@ import { RouterModule } from '@angular/router';
 import { PatientService } from '../../services/patient.service';
 import { ToastrService } from 'ngx-toastr';
 @Component({
-  selector: 'app-Patient-form',
+  selector: 'app-patient-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './Patient-form.component.html',
