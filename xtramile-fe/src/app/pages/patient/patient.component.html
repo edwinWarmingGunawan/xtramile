@@ -1,10 +1,8 @@
 <div class="flex justify-between items-center mb-6">
-  <h4 class="font-bold text-2xl">Manage Patient</h4>
-  <input 
-      type="text" 
-      placeholder="Search patients..." 
-      class="ml-4 px-3 py-2 rounded-md border border-gray-300" 
-    >
+  <div class="flex items-center">
+    <h4 class="font-bold text-2xl">Manage Patients</h4>
+    <input type="text" placeholder="Search..." class="ml-4 px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
+  </div>
   <button type="button" (click)="openModel()"
     class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-full px-6 py-3 text-center mb-2 ">Add
     Patient</button>
@@ -13,7 +11,7 @@
   <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <caption
       class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-      
+      Manage Patient
     </caption>
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
@@ -85,6 +83,29 @@
       }
     </tbody>
   </table>
+</div>
+
+<div class="mt-4">
+  <ul class="flex justify-center">
+    <li class="mr-2">
+      <button (click)="previousPage()"
+        class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+            clip-rule="evenodd" />
+        </svg>
+      </button>
+    </li>
+    <li class="mr-2">
+      <button (click)="nextPage()"
+        class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10l-3.293-3.293a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+            clip-rule="evenodd" />
+        </svg>
+      </button>
+    </li>
+  </ul>
 </div>
 
 
