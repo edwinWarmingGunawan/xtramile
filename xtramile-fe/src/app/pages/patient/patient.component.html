@@ -1,5 +1,10 @@
 <div class="flex justify-between items-center mb-6">
-  <h4 class="font-bold text-2xl"></h4>
+  <h4 class="font-bold text-2xl">Manage Patient</h4>
+  <input 
+      type="text" 
+      placeholder="Search patients..." 
+      class="ml-4 px-3 py-2 rounded-md border border-gray-300" 
+    >
   <button type="button" (click)="openModel()"
     class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-full px-6 py-3 text-center mb-2 ">Add
     Patient</button>
@@ -8,7 +13,7 @@
   <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <caption
       class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-      Manage Patient
+      
     </caption>
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
@@ -81,7 +86,6 @@
     </tbody>
   </table>
 </div>
-
 
 
 <app-model [isOpen]="isModelOpen" (closeModel)="closeModel()">
