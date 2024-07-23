@@ -39,7 +39,6 @@ export class PatientComponent implements OnInit {
 
   // Methods to handle page changes (next, previous, etc.)
   nextPage(): void {
-    console.log(this.currentPage+">>>>>>"+this.totalPages)
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
       this.getAllPatients();
@@ -75,5 +74,12 @@ export class PatientComponent implements OnInit {
   closeModel() {
     this.isModelOpen = false;
     this.getAllPatients();
+  }
+
+  onKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      let search=(event.target as HTMLInputElement).value;
+      this.getAllPatients();
+    }
   }
 }
