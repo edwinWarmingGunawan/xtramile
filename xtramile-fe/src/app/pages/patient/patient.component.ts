@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { PatientService } from '../../services/patient.service';
 import { IPatient } from '../shared/models/Patient';
 @Component({
-  selector: 'app-Patient',
+  selector: 'app-patient',
   standalone: true,
   imports: [ModelComponent, PatientFormComponent],
   templateUrl: './patient.component.html',
@@ -21,8 +21,21 @@ export class PatientComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
+  currentPage = 1;
+  pageSize = 10;
+  totalPages = 0;
+
   ngOnInit(): void {
     this.getAllPatient();
+    this.totalPages = Math.ceil(this.Patients.length / this.pageSize);
+  }
+
+  previousPage() {
+    this.currentPage--;
+  }
+
+  nextPage() {
+    this.currentPage++;
   }
 
   getAllPatient() {
