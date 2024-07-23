@@ -11,24 +11,8 @@ export class PatientService {
   apiurl = 'http://localhost:8000/api/v1/patients';
   constructor(private http: HttpClient) {}
 
-  // getAllPatient(): Observable<ApiResponse<IPatient[]>> {
-  //   return this.http.get<ApiResponse<IPatient[]>>(`${this.apiurl+'?page=0&size=10'}`);
-  // }
-
-  // getAllPatients(currentPage: number, limit: number): Observable<ApiResponse<IPatient[]>> {
-  //   return this.http.get<IPatient[]>(`${this.apiurl}?page=${currentPage}&pageSize=${limit}`)
-  //     .pipe(
-  //       map((patients: IPatient[]) => {
-  //         return {
-  //           data: patients,
-  //           totalPages: patients.length // or however you calculate totalPatients
-  //         } as ApiResponse<IPatient[]>;
-  //       })
-  //     );
-  // }
-
-  getAllPatients(currentPage: number, limit: number): Observable<ApiResponse<IPatient[]>> {
-    return this.http.get<ApiResponse<IPatient[]>>(`${this.apiurl}?page=${currentPage}&pageSize=${limit}`);
+  getAllPatients(currentPage: number, limit: number,search:string): Observable<ApiResponse<IPatient[]>> {
+    return this.http.get<ApiResponse<IPatient[]>>(`${this.apiurl}?page=${currentPage}&pageSize=${limit}&search=${search}`);
   }
 
   getPatient(id: string): Observable<ApiResponse<IPatient>> {
