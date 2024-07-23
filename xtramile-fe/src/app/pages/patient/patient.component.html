@@ -1,7 +1,7 @@
 <div class="flex justify-between items-center mb-6">
   <div class="flex items-center">
     <h4 class="font-bold text-2xl">Manage Patients</h4>
-    <input type="text" placeholder="Search..." class="ml-4 px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
+    <input (keydown)="onKeyDown($event)" type="text" placeholder="Search..." class="ml-4 px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
   </div>
   <button type="button" (click)="openModel()"
     class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-full px-6 py-3 text-center mb-2 ">Add
