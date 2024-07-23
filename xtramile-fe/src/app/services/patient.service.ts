@@ -11,7 +11,7 @@ export class PatientService {
   constructor(private http: HttpClient) {}
 
   getAllPatient(): Observable<ApiResponse<IPatient[]>> {
-    return this.http.get<ApiResponse<IPatient[]>>(`${this.apiurl}`);
+    return this.http.get<ApiResponse<IPatient[]>>(`${this.apiurl+'?page=0&size=3'}`);
   }
 
   getPatient(id: string): Observable<ApiResponse<IPatient>> {
