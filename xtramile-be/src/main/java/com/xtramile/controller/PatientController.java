@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.xtramile.util.ResponseData;
 import com.xtramile.model.Patient;
 import com.xtramile.repository.PatientRepository;
+import io.micrometer.common.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -32,10 +33,18 @@ public class PatientController {
     @GetMapping("/patients")
     public ResponseEntity<ResponseData> getAllPatients(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size) {
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(required = false) String search) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<Patient> patients = patientRepository.findAll(pageable);
-        ResponseData responseData = new ResponseData(patients.getContent(), "Get All Data Ok.",patients.getTotalElements());
+        Page<Patient> patients;
+
+        if (StringUtils.isNotBlank(search)) {
+            patients = patientRepository.findByFirstNameContainingIgnoreCase(search, pageable);
+        } else {
+            patients = patientRepository.findAll(pageable);
+        }
+
+        ResponseData responseData = new ResponseData(patients.getContent(), "Get All Data Ok.", patients.getTotalElements());
         return ResponseEntity.ok(responseData);
     }
 
