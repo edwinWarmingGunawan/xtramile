@@ -13,28 +13,28 @@ public class Patient {
     private Long Id;
 
     @Column(name="first_name")
-    private String FirstName;
+    private String firstName;
 
     @Column(name="last_name")
-    private String LastName;
+    private String lastName;
 
     @Column(name="dob")
-    private Date Dob;
+    private Date dob;
 
     @Column(name="address")
-    private String Address;
+    private String address;
 
     @Column(name="suburb")
-    private String Suburb;
+    private String suburb;
 
     @Column(name="state")
-    private String State;
+    private String state;
 
     @Column(name="post_code")
-    private String PostCode;
+    private String postCode;
 
     @Column(name="phone_no")
-    private String PhoneNo;
+    private String phoneNo;
 
     public Patient(){
 
@@ -42,14 +42,14 @@ public class Patient {
 
     public Patient(String firstName, String lastName, Date dob, String address, String suburb, String state, String postCode, String phoneNo) {
         super();
-        FirstName = firstName;
-        LastName = lastName;
-        Dob = dob;
-        Address = address;
-        Suburb = suburb;
-        State = state;
-        PostCode = postCode;
-        PhoneNo = phoneNo;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = dob;
+        this.address = address;
+        this.suburb = suburb;
+        this.state = state;
+        this.postCode = postCode;
+        this.phoneNo = phoneNo;
     }
 
     public Long getId() {
@@ -61,66 +61,66 @@ public class Patient {
     }
 
     public String getFirstName() {
-        return FirstName;
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {
-        FirstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return this.lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        this.lastName = lastName;
     }
 
     public Date getDob() {
-        return Dob;
+        return this.dob;
     }
 
     public void setDob(Date dob) {
-        Dob = dob;
+        this.dob = dob;
     }
 
     public String getAddress() {
-        return Address;
+        return this.address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getSuburb() {
-        return Suburb;
+        return this.suburb;
     }
 
     public void setSuburb(String suburb) {
-        Suburb = suburb;
+        this.suburb = suburb;
     }
 
     public String getState() {
-        return State;
+        return this.state;
     }
 
     public void setState(String state) {
-        State = state;
+        this.state = state;
     }
 
     public String getPostCode() {
-        return PostCode;
+        return this.postCode;
     }
 
     public void setPostCode(String postCode) {
-        PostCode = postCode;
+        this.postCode = postCode;
     }
 
     public String getPhoneNo() {
-        return PhoneNo;
+        return this.phoneNo;
     }
 
     public void setPhoneNo(String phoneNo) {
-        PhoneNo = phoneNo;
+        this.phoneNo = phoneNo;
     }
 }
