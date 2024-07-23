@@ -18,8 +18,8 @@ export class PatientComponent implements OnInit {
   Patient!: IPatient;
   currentPage = 0;
   totalPages = 0;
-  limit = 5; // Number of patients per page
-
+  limit = 5; 
+  search='';
   constructor(private patientService: PatientService,private toastr: ToastrService) {}
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class PatientComponent implements OnInit {
   }
 
   getAllPatients(): void {
-    this.patientService.getAllPatients(this.currentPage,this.limit).subscribe({
+    this.patientService.getAllPatients(this.currentPage,this.limit,this.search).subscribe({
       next: (response) => {
         if (response.data) {
           this.Patients = response.data;
@@ -79,6 +79,7 @@ export class PatientComponent implements OnInit {
   onKeyDown(event: KeyboardEvent) {
     if (event.key === 'Enter') {
       let search=(event.target as HTMLInputElement).value;
+      this.search = search;
       this.getAllPatients();
     }
   }
